@@ -7,10 +7,12 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import TreeItem from "@material-ui/lab/TreeItem";
 import { ContextMenuTrigger } from "react-contextmenu";
 import ContextMenuComponent from "./context-menu";
+import { Store } from "../../../adapters/store";
+import { FileSystem } from "../../../domain/port/store/editor-file.store.port";
 
 const TreeViewFileSystem = () => {
-  // const fileSystem:EditorFileMap = Store.files(state => state.fileSystem);
-
+  const fileSystem:FileSystem = Store.files(state => state.fileSystem());
+  console.log(fileSystem)
   return (<div>
     <ContextMenuComponent></ContextMenuComponent>
     <div className="text-sm uppercase bg-black-input w-full box-border p-2 mb-2">Files</div>

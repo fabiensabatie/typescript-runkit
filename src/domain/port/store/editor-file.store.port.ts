@@ -4,8 +4,13 @@ export interface EditorFileMap {
   [completePath: string]: EditorFile;
 }
 
+export interface FileSystem {
+  file : EditorFile;
+  children: FileSystem[];
+}
 export interface EditorFileStoreInterface {
-  fileSystem: EditorFileMap;
+  fileSystem: () => FileSystem;
+  filesMap: EditorFileMap;
   createFolder: (path: string, name: string) => Promise<void>;
   createFile: (path: string, file: EditorFile) => Promise<void>;
   deleteFile: (completePath: string) => Promise<void>;
